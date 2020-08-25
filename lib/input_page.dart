@@ -18,25 +18,25 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(colour: Color(0xFF1D1E33),),
                 ),
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(colour: Color(0xFF1D1E33),),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: ReusableCard(),
+            child: ReusableCard(colour: Color(0xFF1D1E33),),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(colour: Color(0xFF1D1E33),),
                 ),
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(colour: Color(0xFF1D1E33),),
                 ),
               ],
             ),
@@ -48,10 +48,8 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-  const ReusableCard({
-    Key key,
-  }) : super(key: key);
-
+  final Color colour;
+  ReusableCard({@required this.colour});  //@required means that has to be entered
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +57,7 @@ class ReusableCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
             10), //the color property needed to be in box decoration
-        color: Color(0xFF1D1E33),
+        color: colour,
       ),
     );
   }
