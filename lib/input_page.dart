@@ -19,7 +19,7 @@ class _InputPageState extends State<InputPage> {
   GenderType selectedGender; //using enum to get this Gender
   int height = 180;
   int weight = 60;
-  int age = 20;
+  int age = 40;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
