@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/components/reuseable_card.dart';
 import '../constants.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+
+  ResultsPage({@required this.bmiResult, @required this.resultText, @required this.resultInterpretation});
+  final String bmiResult;
+  final String resultText;
+  final String resultInterpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +24,7 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
+              padding: EdgeInsets.all(15.0),
               child: Text(
                 'Your Result',
                 style: kNumberTextStyle,
@@ -30,17 +38,17 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'OVERWEIGHT', //Overweight, Fit etc
+                    resultText.toUpperCase(), //Overweight, Fit etc
                     style: kBodyTypeText,
                   ),
                   Text(
-                    '26.7', //Actual BMI here
+                    bmiResult, //Actual BMI here
                         style: kBMInumber,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'You have a higher than normal body weight. Try to exercise more',
+                      resultInterpretation,
                       style: kComments,
                       textAlign: TextAlign.center,
                     ),
@@ -50,23 +58,12 @@ class ResultsPage extends StatelessWidget {
               colour: kActiveCardColor,
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTitle: 'RE-CALCULATE',
             onTap: (){
               Navigator.pop(context);
             },
-            child: Container(
-              child: Center(child: Text('RE-CALCULATE',
-                style: kLargeButtonTextStyle,
-              ),
-              ),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              padding: EdgeInsets.only(bottom: 20.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
           ),
-
         ],
       ),
     );
